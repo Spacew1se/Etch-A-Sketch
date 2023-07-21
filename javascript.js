@@ -5,7 +5,6 @@ const gridContainer = document.querySelector('.gridContainer');
 
 
 function createGrid(gridSize) {
-  
     for (let h=0; h<gridSize; h++) {    
         const gridColumn = document.createElement('div');
         gridColumn.classList.add('gridColumn');
@@ -22,4 +21,15 @@ function createGrid(gridSize) {
     }) 
 }
 
+//Change color when hovered over
+function addHover() {
+    const squares = document.querySelectorAll('.gridSquare');
+    squares.forEach(square => {
+        square.addEventListener("mouseover", function (e) {
+            e.target.style.backgroundColor = 'blue';
+        })
+    })
+}
+
 createGrid(gridSize);
+addHover();
