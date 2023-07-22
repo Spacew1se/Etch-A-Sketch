@@ -1,4 +1,4 @@
-let gridSize = 16;
+let gridSize = 64;
 
 const container = document.querySelector('.container');
 const gridContainer = document.querySelector('.gridContainer');
@@ -21,6 +21,19 @@ function createGrid(gridSize) {
     }) 
 }
 
+function resetGrid() {
+    const squares = document.querySelectorAll('.gridSquare');
+    squares.forEach(square => {
+        square.style.backgroundColor = 'lightblue';
+    })
+}
+
+function initiateReset() {
+    const resetBtn = document.querySelector('#resetButton');
+    resetBtn.addEventListener('click', resetGrid);
+}
+
+
 //Change color when hovered over
 function addHover() {
     const squares = document.querySelectorAll('.gridSquare');
@@ -33,3 +46,4 @@ function addHover() {
 
 createGrid(gridSize);
 addHover();
+initiateReset();
