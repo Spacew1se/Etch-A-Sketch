@@ -1,4 +1,4 @@
-let gridSize = 64;
+const INITIALSIZE = 16;
 
 const container = document.querySelector('.container');
 const gridContainer = document.querySelector('.gridContainer');
@@ -18,7 +18,26 @@ function createGrid(gridSize) {
             gridSquare.classList.add('gridSquare');
             row.appendChild(gridSquare);
         }
-    }) 
+    })
+    addHover(); 
+}
+
+function removeGrid() {
+    while (gridContainer.firstChild) {
+        gridContainer.removeChild(gridContainer.firstChild);
+    }
+}
+
+function gridSlider() {
+    const gridSize = document.querySelector('#gridSize');
+    const sizeInput = document.querySelector('#sizeInput');
+    gridSize.textContent = `${sizeInput.value}x${sizeInput.value}`;
+    sizeInput.addEventListener('input', (e) => {
+        gridSize.textContent = `${e.target.value}x${e.target.value}`;
+        removeGrid();
+        createGrid(e.target.value);
+    })
+    
 }
 
 function resetGrid() {
@@ -44,6 +63,6 @@ function addHover() {
     })
 }
 
-createGrid(gridSize);
-addHover();
+createGrid(INITIALSIZE);
 initiateReset();
+gridSlider();
