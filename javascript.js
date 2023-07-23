@@ -1,4 +1,5 @@
 const INITIALSIZE = 16;
+let drawMode = normalMode;
 
 const container = document.querySelector('.container');
 const gridContainer = document.querySelector('.gridContainer');
@@ -58,11 +59,31 @@ function addHover() {
     const squares = document.querySelectorAll('.gridSquare');
     squares.forEach(square => {
         square.addEventListener("mouseover", function (e) {
-            e.target.style.backgroundColor = 'blue';
+            e.target.style.backgroundColor = drawMode();
         })
     })
+}
+
+function rainbowButton() {
+    const rainbow = document.querySelector('#rainbowButton');
+    const normal = document.querySelector('#normalButton');
+    rainbow.addEventListener('click', () => drawMode = rainbowMode);
+    normal.addEventListener('click', () => drawMode = normalMode);
+}
+
+function rainbowMode() {
+    return `rgb(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)})`;
+}
+
+function normalMode() {
+    return 'blue';
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
 }
 
 createGrid(INITIALSIZE);
 initiateReset();
 gridSlider();
+rainbowButton();
