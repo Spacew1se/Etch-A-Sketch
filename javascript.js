@@ -48,12 +48,6 @@ function resetGrid() {
     })
 }
 
-function initiateReset() {
-    const resetBtn = document.querySelector('#resetButton');
-    resetBtn.addEventListener('click', resetGrid);
-}
-
-
 //Change color when hovered over
 function addHover() {
     const squares = document.querySelectorAll('.gridSquare');
@@ -64,11 +58,15 @@ function addHover() {
     })
 }
 
-function rainbowButton() {
+function initButtons() {
+    const resetBtn = document.querySelector('#resetButton');
     const rainbow = document.querySelector('#rainbowButton');
     const normal = document.querySelector('#normalButton');
+    const eraser = document.querySelector('#eraserButton');
+    resetBtn.addEventListener('click', resetGrid);
     rainbow.addEventListener('click', () => drawMode = rainbowMode);
     normal.addEventListener('click', () => drawMode = normalMode);
+    eraser.addEventListener('click', () => drawMode = eraserMode);
 }
 
 function rainbowMode() {
@@ -79,11 +77,14 @@ function normalMode() {
     return 'blue';
 }
 
+function eraserMode() {
+    return 'lightblue';
+}
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
 createGrid(INITIALSIZE);
-initiateReset();
 gridSlider();
-rainbowButton();
+initButtons();
