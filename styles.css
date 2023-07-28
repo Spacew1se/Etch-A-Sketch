@@ -81,7 +81,7 @@ h6 {
     justify-content: space-evenly;
     height: 500px;
     width: 500px;
-    outline: 2px solid black;
+    outline: 1px solid black;
 }
 
 .gridColumn {
@@ -93,6 +93,5 @@ h6 {
 
 .gridSquare {
     flex: 1;
-    background-color: lightblue;
     outline: 1px solid darkred;
 }

@@ -1,11 +1,16 @@
 const INITIALSIZE = 16;
+const BGCOLOR = 'rgb(255, 255, 255)';
+const FILLCOLOR = 'rgb(0, 0, 0)';
+
 let drawMode = normalMode;
+
 
 const container = document.querySelector('.container');
 const gridContainer = document.querySelector('.gridContainer');
 
 
 function createGrid(gridSize) {
+
     for (let h=0; h<gridSize; h++) {    
         const gridColumn = document.createElement('div');
         gridColumn.classList.add('gridColumn');
@@ -13,20 +18,29 @@ function createGrid(gridSize) {
     }       
     
     const rows = document.querySelectorAll('.gridColumn');
+
     rows.forEach(row => {
         for (let w=0; w <gridSize; w++) {
             const gridSquare = document.createElement('div');
             gridSquare.classList.add('gridSquare');
+            gridSquare.style.backgroundColor = BGCOLOR;
             row.appendChild(gridSquare);
         }
     })
-    addHover(); 
+    addHoverEffect(); 
 }
 
 function removeGrid() {
     while (gridContainer.firstChild) {
         gridContainer.removeChild(gridContainer.firstChild);
     }
+}
+
+function resetGrid() {
+    const squares = document.querySelectorAll('.gridSquare');
+    squares.forEach(square => {
+        square.style.backgroundColor = BGCOLOR;
+    })
 }
 
 function gridSlider() {
@@ -38,22 +52,13 @@ function gridSlider() {
         removeGrid();
         createGrid(e.target.value);
     })
-    
 }
 
-function resetGrid() {
-    const squares = document.querySelectorAll('.gridSquare');
-    squares.forEach(square => {
-        square.style.backgroundColor = 'lightblue';
-    })
-}
-
-//Change color when hovered over
-function addHover() {
+function addHoverEffect() {
     const squares = document.querySelectorAll('.gridSquare');
     squares.forEach(square => {
         square.addEventListener("mouseover", function (e) {
-            e.target.style.backgroundColor = drawMode();
+            e.target.style.backgroundColor = drawMode(e);
         })
     })
 }
@@ -63,22 +68,42 @@ function initButtons() {
     const rainbow = document.querySelector('#rainbowButton');
     const normal = document.querySelector('#normalButton');
     const eraser = document.querySelector('#eraserButton');
+    const shading = document.querySelector('#shadingButton');
     resetBtn.addEventListener('click', resetGrid);
     rainbow.addEventListener('click', () => drawMode = rainbowMode);
     normal.addEventListener('click', () => drawMode = normalMode);
     eraser.addEventListener('click', () => drawMode = eraserMode);
+    shading.addEventListener('click', () => drawMode = shadingMode);
 }
 
-function rainbowMode() {
+function rainbowMode(e) {
     return `rgb(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)})`;
 }
 
-function normalMode() {
-    return 'blue';
+function normalMode(e) {
+    return FILLCOLOR;
 }
 
-function eraserMode() {
-    return 'lightblue';
+function eraserMode(e) {
+    return BGCOLOR;
+}
+
+//If the current color lacks an alpha (opacity) value, and is not already completely black
+//Change the color to black at 10% opacity
+//If an alpha value is present increase it by 10%
+function shadingMode(e) {
+    let currentColor = e.target.style.backgroundColor;
+    let newColor = 'rgba(0, 0, 0, 0.1)';
+
+    if (currentColor.slice(3, 4) !== 'a' && currentColor !== 'rgb(0, 0, 0)') {
+        return newColor;
+    }
+    else {
+        let currentAlpha = parseFloat(currentColor.slice(-4, -1));
+        currentAlpha += 0.1;
+        newColor = currentColor.slice(0,-4) + currentAlpha.toFixed(1) + ')';
+    }
+    return newColor;
 }
 
 function getRandomInt(max) {
