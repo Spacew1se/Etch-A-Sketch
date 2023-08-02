@@ -67,31 +67,78 @@ h6 {
     overflow-wrap: break-word;
 }
 
-.container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2em;
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.etchBorder {
+  display: flex;
+  gap: 2rem;
+  padding: 2em 4em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  border: 2px solid black;
+  border-radius: 5%;
+}
+
+.buttons {
+  display: flex;
+  gap: 2em;
 }
 
 .gridContainer {
-    display: flex;
-    justify-content: space-evenly;
-    height: 500px;
-    width: 500px;
-    outline: 1px solid black;
+  display: flex;
+  background-color: white;
+  justify-content: space-evenly;
+  height: 500px;
+  width: 500px;
+  outline: 1px solid black;
 }
 
+.bottomControls {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+.sizeInput {
+  background-color: rgb(239,239,239);
+  border: 1px solid black;
+  border-radius: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 25%;
+}
+
+.resetButton {
+  flex-basis: 25%;
+}
+
+#resetButton {
+  min-height: 100%;
+  min-width: 100%;
+}
+
+
 .gridColumn {
-    flex: 1;
-    display:flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+  flex: 1;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .gridSquare {
-    flex: 1;
-    outline: 1px solid darkred;
+  flex: 1;
+  border-bottom: 1px dotted rgba(6,6,6,0.44);
+  border-right: 1px dotted rgba(6, 6, 6, 0.44);
 }

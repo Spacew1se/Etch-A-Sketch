@@ -11,27 +11,32 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="wrapper">
         <h1>
             <p>Etch-A-Sketch</p>
-        </h1>
-        <div class="sizeInput">
-            <input type="range" id="sizeInput" value="16" name="gridSize" min="16" max="64">
-            <div>
-                <label for="gridSize">Grid Size: </label>
-                <output id="gridSize"></output>
-            </div> 
+        </h1>  
+        <div class="etchBorder">
+            <div class="buttons">
+                <button id="rainbowButton">Rainbow Mode</button>
+                <button id="shadingButton">Shading Mode</button>
+                <button id="normalButton">Normal Mode</button>
+                <button id="eraserButton">Eraser Mode</button>
+            </div>
+            <div class="gridContainer"></div>
+            <div class="bottomControls">
+                <div class="sizeInput">
+                    <input type="range" id="sizeInput" value="16" name="gridSize" min="16" max="64">
+                    <div>
+                        <label for="gridSize">Grid Size: </label>
+                        <output id="gridSize"></output>
+                    </div> 
+                </div>
+                <div class="resetButton">
+                    <button id="resetButton">Reset Grid</button>
+                </div>
+            </div>
         </div>
-        <div class="resetButton">
-            <button id="resetButton">Reset Grid</button>
-        </div>
-        <div class="buttons">
-            <button id="rainbowButton">Rainbow Mode</button>
-            <button id="shadingButton">Shading Mode</button>
-            <button id="normalButton">Normal Mode</button>
-            <button id="eraserButton">Eraser Mode</button>
-        </div>
-        <div class="gridContainer"></div>
+        
     </div>
 </body>
 

@@ -5,7 +5,7 @@ const FILLCOLOR = 'rgb(0, 0, 0)';
 let drawMode = normalMode;
 
 
-const container = document.querySelector('.container');
+const wrapper = document.querySelector('.wrapper');
 const gridContainer = document.querySelector('.gridContainer');
 
 
@@ -76,15 +76,15 @@ function initButtons() {
     shading.addEventListener('click', () => drawMode = shadingMode);
 }
 
-function rainbowMode(e) {
+function rainbowMode() {
     return `rgb(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)})`;
 }
 
-function normalMode(e) {
+function normalMode() {
     return FILLCOLOR;
 }
 
-function eraserMode(e) {
+function eraserMode() {
     return BGCOLOR;
 }
 
