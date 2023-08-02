@@ -7,13 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-A-Sketch</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Handjet:wght@100&display=swap');
+    </style>
     <script defer src="javascript.js"></script>
 </head>
 
 <body>
     <div class="wrapper">
         <h1>
-            <p>Etch-A-Sketch</p>
+            <p class="title">Etch-A-Sketch</p>
         </h1>  
         <div class="etchBorder">
             <div class="buttons">
@@ -27,7 +30,7 @@
                 <div class="sizeInput">
                     <input type="range" id="sizeInput" value="16" name="gridSize" min="16" max="64">
                     <div>
-                        <label for="gridSize">Grid Size: </label>
+                        <label for="gridSize"></label>
                         <output id="gridSize"></output>
                     </div> 
                 </div>
@@ -36,7 +39,7 @@
                 </div>
             </div>
         </div>
-        
+        <div class="footer">Spacew1se 2023</div>
     </div>
 </body>
 
